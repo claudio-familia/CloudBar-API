@@ -1,0 +1,11 @@
+/*
+CREATE DATABASE cloudbar;
+
+USE cloudbar;
+
+CREATE TABLE roles (
+	id INT PRIMARY KEY AUTO_INCREMENT,
+    name NVARCHAR(250)
+)
+*/
+SELECT * FROM roles
