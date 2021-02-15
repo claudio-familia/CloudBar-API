@@ -1,4 +1,3 @@
-import Role from '../models/role.model';
 import RoleService from '../services/role.service';
 import lodash from 'lodash';
 
@@ -34,7 +33,7 @@ const RoleController = {
             else res.send(data);
         });
     },
-    create: (req, res) => {        
+    create: (req, res) => {
         if (lodash.isEmpty(req.body)) {
             res.status(400).send({
                 message: "Content can not be empty!"
