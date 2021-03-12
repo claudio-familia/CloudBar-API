@@ -11,6 +11,9 @@ namespace CloudBar.Domain.General
         public string LastName { get; set; }
         public DateTime Datebirth { get; set; }
         public string Address { get; set; }
+        public string District { get; set; }
+        public string Province { get; set; }
+        public string Nationality { get; set; }
         public string Phone { get; set; }
         public Guid PlaceId { get; set; }
 
