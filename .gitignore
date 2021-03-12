@@ -17,3 +17,5 @@
 /CloudBar.Domain/bin/
 /CloudBar.Domain/obj/
 
+/CloudBarAPI/obj/
+/CloudBarAPI/bin/
