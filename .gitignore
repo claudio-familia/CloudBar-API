@@ -1,0 +1,19 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/CloudBar/bin/
+/CloudBar/obj/
+
+/CloudBar.BussinesLogic/bin/
+/CloudBar.BussinesLogic/obj/
+
+/CloudBar.Common/bin/
+/CloudBar.Common/obj/
+
+/CloudBar.DataAccess/bin/
+/CloudBar.DataAccess/obj/
+
+/CloudBar.Domain/bin/
+/CloudBar.Domain/obj/
+

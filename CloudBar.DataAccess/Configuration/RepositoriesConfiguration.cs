@@ -12,7 +12,7 @@ namespace CloudBar.DataAccess.Configuration
         {
             services.AddDbContext<CloudBarDBContext>(m =>
             {
-                m.UseMySQL(configuration.GetConnectionString("MardomGo"));
+                m.UseMySQL(configuration.GetConnectionString("CloudBar"));
             });
 
             services.AddScoped<IDataRepositoryFactory, DataRepositoryFactory>();
