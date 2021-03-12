@@ -5,11 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\CloudBar.BussinesLogic\CloudBar.BusinessLogic.csproj" />
     <ProjectReference Include="..\CloudBar.DataAccess\CloudBar.DataAccess.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Controllers\" />
   </ItemGroup>
 
 </Project>

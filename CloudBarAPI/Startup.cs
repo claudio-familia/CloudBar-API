@@ -9,6 +9,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using CloudBar.DataAccess.Configuration;
 using Microsoft.Extensions.Configuration;
+using AutoMapper;
+using CloudBar.BusinessLogic.Configuration;
 
 namespace CloudBar
 {
@@ -30,7 +32,12 @@ namespace CloudBar
                 builder.AllowAnyMethod();
             }));
 
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+            services.AddScoped<IMapper, Mapper>();
+
             services.AddRespositories(Configuration);
+
+            services.AddServices();
 
             services.AddCors();
 
