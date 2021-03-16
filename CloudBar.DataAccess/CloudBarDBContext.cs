@@ -1,18 +1,50 @@
-﻿using CloudBar.Domain.General;
+﻿using CloudBar.Common.Services.Contracts;
+using CloudBar.Domain;
+using CloudBar.Domain.General;
 using CloudBar.Domain.Purchase;
 using CloudBar.Domain.Sale;
 using CloudBar.Domain.Security;
 using CloudBar.Domain.Warehouse;
 using Microsoft.EntityFrameworkCore;
 using System;
+using System.Linq;
 
 namespace CloudBar.DataAccess
 {
     public class CloudBarDBContext : DbContext
     {
-        public CloudBarDBContext(DbContextOptions<CloudBarDBContext> options) : base(options)
+        private readonly ICurrentUserService _currentUserService;
+        public CloudBarDBContext(DbContextOptions<CloudBarDBContext> options,
+                                 ICurrentUserService currentUserService) : base(options)
         {
+            _currentUserService = currentUserService;
         }
+
+        #region Save Changes
+        public override int SaveChanges()
+        {
+            // Get the entries that are auditable
+            var auditableEntitySet = ChangeTracker.Entries<IAuditableEntity>();
+
+            if (auditableEntitySet != null)
+            {
+                foreach (var auditableEntity in auditableEntitySet.Where(c => c.State == EntityState.Added || c.State == EntityState.Modified))
+                {
+                    if (auditableEntity.State == EntityState.Added)
+                    {
+                        auditableEntity.Entity.CreatedAt = DateTime.Now;
+                        auditableEntity.Entity.CreatedBy = _currentUserService.UserId.Value;
+                    }
+
+                    auditableEntity.Entity.UpdatedAt = DateTime.Now;
+                    auditableEntity.Entity.UpdatedBy = _currentUserService.UserId;
+                }
+            }
+
+            return base.SaveChanges();
+        }
+
+        #endregion
 
         #region Security
         public DbSet<Role> Roles { get; set; }

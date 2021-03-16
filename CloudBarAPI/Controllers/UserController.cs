@@ -6,9 +6,9 @@ namespace CloudBar.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class RoleController : BaseController<Role>
+    public class UserController : BaseController<User>
     {
-        public RoleController(IBaseService<Role> baseService) : base(baseService)
+        public UserController(IBaseService<User> baseService) : base(baseService)
         {
         }
     }

@@ -39,10 +39,12 @@ namespace CloudBar.DataAccess.Repositories.Contracts
 
         T Get(Guid id);
 
+        T Get(Expression<Func<T, bool>> filter = null);
+
         TResult Get<TResult>(Func<IQueryable<T>, IQueryable<TResult>> transform, Expression<Func<T, bool>> filter = null, string sortExpression = null);
 
         bool Exists(long id);
 
-        bool Exists(Func<IQueryable<T>, IQueryable<T>> query, Expression<Func<T, bool>> filter = null);
+        bool Exists(Expression<Func<T, bool>> filter = null);
     }
 }

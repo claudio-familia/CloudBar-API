@@ -35,9 +35,9 @@ namespace CloudBar.BusinessLogic.Services
             return repository.Exists(id);
         }
 
-        public virtual bool Exists(Func<IQueryable<T>, IQueryable<T>> query, Expression<Func<T, bool>> filter = null)
+        public virtual bool Exists(Expression<Func<T, bool>> filter = null)
         {
-            return repository.Exists(query);
+            return repository.Exists(filter);
         }
 
         public virtual T Get(long id)

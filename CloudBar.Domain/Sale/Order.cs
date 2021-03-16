@@ -9,8 +9,8 @@ namespace CloudBar.Domain.Sale
     [Table("Orders")]
     public class Order : BaseEntity
     {
-        public Guid UserId { get; set; }
-        public Guid PlaceId { get; set; }
+        public int UserId { get; set; }
+        public int PlaceId { get; set; }
         public string Number { get; set; }
         public string Type { get; set; }
         public decimal Total { get; set; }

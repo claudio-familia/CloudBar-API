@@ -9,8 +9,8 @@ namespace CloudBar.Domain.Sale
     [Table("Invoices")]
     public class Invoice : BaseEntity
     {
-        public Guid UserId { get; set; }
-        public Guid OrderId { get; set; }
+        public int UserId { get; set; }
+        public int OrderId { get; set; }
         public decimal LawTip { get; set; }
         public decimal Taxes { get; set; }
         public decimal Total { get; set; }

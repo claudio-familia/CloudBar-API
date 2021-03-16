@@ -130,6 +130,11 @@ namespace CloudBar.DataAccess.Repositories
             return _DbSet.Find(id);
         }
 
+        public TEntity Get(Expression<Func<TEntity, bool>> filter = null)
+        {
+            return _DbSet.FirstOrDefault(filter);
+        }
+
         public TResult Get<TResult>(Func<IQueryable<TEntity>, IQueryable<TResult>> transform, Expression<Func<TEntity, bool>> filter = null, string sortExpression = null)
         {
             var query = filter == null ? _DbSet : _DbSet.Where(filter);
@@ -145,13 +150,11 @@ namespace CloudBar.DataAccess.Repositories
             return _DbSet.Find(id) != null;
         }
 
-        public bool Exists(Func<IQueryable<TEntity>, IQueryable<TEntity>> selector, Expression<Func<TEntity, bool>> filter = null)
+        public bool Exists(Expression<Func<TEntity, bool>> filter = null)
         {
-            var query = filter == null ? _DbSet.AsNoTracking() : _DbSet.AsNoTracking().Where(filter);
+            var query = filter == null ? _DbSet.AsNoTracking() : _DbSet.AsNoTracking().Where(filter);            
 
-            var result = selector(query);
-
-            return result.Any();
+            return query.Any();
         }
     }
 }

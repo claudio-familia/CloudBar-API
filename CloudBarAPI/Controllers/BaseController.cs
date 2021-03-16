@@ -1,26 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using CloudBar.BusinessLogic.Services.Contracts;
+﻿using CloudBar.BusinessLogic.Services.Contracts;
 using CloudBar.Controllers.Contracts;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CloudBar.Controllers
-{
+{    
     public class BaseController<T> : Controller, IBaseController<T> where T : class, new()
     {
-        private IBaseService<T> _baseService;
+        private readonly IBaseService<T> _baseService;
         public BaseController(IBaseService<T> baseService)
         {
             _baseService = baseService;
         }
 
+        [HttpGet]
         public IActionResult Get(string sortExpression)
         {
             return Ok(_baseService.GetAll(sortExpression));
         }
 
+        [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
             var response = _baseService.Get(id);
@@ -30,6 +28,7 @@ namespace CloudBar.Controllers
             return Ok(response);
         }
 
+        [HttpPost]
         public IActionResult Post(T entity)
         {
             var response = _baseService.Add(entity);
@@ -37,11 +36,12 @@ namespace CloudBar.Controllers
             return Ok(response);
         }
 
+        [HttpPut]
         public IActionResult Put(T entity)
         {
             var response = _baseService.Update(entity);
 
             return Ok(response);
-        }       
+        }
     }
 }

@@ -4,9 +4,9 @@ using CloudBar.Domain.Security;
 
 namespace CloudBar.BusinessLogic.Profiles
 {
-    public class RoleProfile : Profile
+    public class CloudBarProfile : Profile
     {
-        public RoleProfile()
+        public CloudBarProfile()
         {
             CreateMap<Role, RoleDto>().ReverseMap();
         }

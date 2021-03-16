@@ -7,11 +7,11 @@ namespace CloudBar.Domain.Purchase
 {
     public class SupplierItem : BaseEntity
     {
-        public Guid SupplierId { get; set; }
-        public Guid ItemId { get; set; }
+        public int SupplierId { get; set; }
+        public int ItemId { get; set; }
         public decimal Price { get; set; }
 
-        public Supplier Supplir { get; set; }
+        public Supplier Supplier { get; set; }
         public Item Item { get; set; }
     }
 }

@@ -6,8 +6,8 @@ namespace CloudBar.Domain.Purchase
 {
     public class PurchaseOrderLine : BaseEntity
     {
-        public Guid PurchaseOrderId { get; set; }
-        public Guid ItemId { get; set; }
+        public int PurchaseOrderId { get; set; }
+        public int ItemId { get; set; }
         public decimal Price { get; set; }
         public int Quantity { get; set; }
 

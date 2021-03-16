@@ -1,12 +1,11 @@
 ﻿using System;
-using System.ComponentModel.DataAnnotations;
+using System.Collections.Generic;
+using System.Text;
 
 namespace CloudBar.Domain
 {
-    public class BaseEntity : IAuditableEntity
+    public interface IAuditableEntity
     {
-        [Key]
-        public int Id { get; set; }
         public int CreatedBy { get; set; }
         public DateTime CreatedAt { get; set; }
         public int? UpdatedBy { get; set; }
