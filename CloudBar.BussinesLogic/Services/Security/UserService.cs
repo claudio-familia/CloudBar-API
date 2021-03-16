@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace CloudBar.BusinessLogic.Services
+namespace CloudBar.BusinessLogic.Services.Security
 {
     public class UserService : BaseService<User>
     {

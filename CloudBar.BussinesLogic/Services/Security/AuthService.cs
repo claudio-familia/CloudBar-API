@@ -12,7 +12,7 @@ using System.Net;
 using System.Security.Claims;
 using System.Text;
 
-namespace CloudBar.BusinessLogic.Services
+namespace CloudBar.BusinessLogic.Services.Security
 {
     public class AuthService : IAuthService
     {

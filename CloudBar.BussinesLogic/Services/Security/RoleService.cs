@@ -1,7 +1,7 @@
 ﻿using CloudBar.DataAccess.Repositories.Contracts;
 using CloudBar.Domain.Security;
 
-namespace CloudBar.BusinessLogic.Services
+namespace CloudBar.BusinessLogic.Services.Security
 {
     public class RoleService : BaseService<Role>
     {
