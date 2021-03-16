@@ -1,5 +1,6 @@
 using AutoMapper;
 using CloudBar.BusinessLogic.Configuration;
+using CloudBar.Common.Configuration;
 using CloudBar.DataAccess.Configuration;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -37,6 +38,8 @@ namespace CloudBar
 
             services.AddCors();
 
+            services.AddJWTAuthentication(Configuration);
+
             services.AddHttpContextAccessor();
 
             services.AddControllers();
@@ -51,6 +54,10 @@ namespace CloudBar
             }
 
             app.UseRouting();
+
+            app.UseAuthentication();
+
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {

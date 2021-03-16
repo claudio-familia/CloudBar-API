@@ -1,14 +1,16 @@
 ﻿using CloudBar.BusinessLogic.Services.Contracts;
 using CloudBar.Domain.General;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CloudBar.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ParameterController : BaseController<Parameter>
+    [Authorize]
+    public class ParametersController : BaseController<Parameter>
     {
-        public ParameterController(IBaseService<Parameter> baseService) : base(baseService)
+        public ParametersController(IBaseService<Parameter> baseService) : base(baseService)
         {
         }
     }

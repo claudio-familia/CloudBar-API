@@ -35,7 +35,7 @@ namespace CloudBar.DataAccess.Repositories.Contracts
 
         IPagedList<TResult> GetPaged<TResult>(Func<IQueryable<T>, IQueryable<TResult>> transform, Expression<Func<T, bool>> filter = null, int startRowIndex = -1, int pageSize = -1, string sortExpression = null);
 
-        T Get(long id);
+        T Get(int id);
 
         T Get(Guid id);
 
@@ -43,7 +43,7 @@ namespace CloudBar.DataAccess.Repositories.Contracts
 
         TResult Get<TResult>(Func<IQueryable<T>, IQueryable<TResult>> transform, Expression<Func<T, bool>> filter = null, string sortExpression = null);
 
-        bool Exists(long id);
+        bool Exists(int id);
 
         bool Exists(Expression<Func<T, bool>> filter = null);
     }

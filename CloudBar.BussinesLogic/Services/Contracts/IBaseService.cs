@@ -12,10 +12,10 @@ namespace CloudBar.BusinessLogic.Services.Contracts
         T Update(T entity);        
         IEnumerable<T> GetAll(string sortExpression = null);
         IEnumerable<T> GetAll(Func<IQueryable<T>, IQueryable<T>> transform, Expression<Func<T, bool>> filter = null, string sortExpression = null);
-        T Get(long id);
+        T Get(int id);
         T Get(Guid id);
         TResult Get<TResult>(Func<IQueryable<T>, IQueryable<TResult>> transform, Expression<Func<T, bool>> filter = null, string sortExpression = null);
-        bool Exists(long id);
+        bool Exists(int id);
         bool Exists(Expression<Func<T, bool>> filter = null);
     }
 }

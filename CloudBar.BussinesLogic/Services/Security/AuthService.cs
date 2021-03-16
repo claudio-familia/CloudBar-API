@@ -44,7 +44,7 @@ namespace CloudBar.BusinessLogic.Services.Security
             {
                 if (_baseRepository.Exists(user => user.Username == username))
                 {
-                    string passwordEncrypt = Encrypt(password);
+                    string passwordEncrypt = password;//Encrypt(password);
 
                     User user = _baseRepository.Get(user => user.Username == username && user.Password == passwordEncrypt);
 

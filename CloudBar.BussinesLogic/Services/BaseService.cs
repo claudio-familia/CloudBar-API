@@ -24,13 +24,11 @@ namespace CloudBar.BusinessLogic.Services
             }
             catch (Exception e)
             {
-
                 throw new ArgumentException(e.Message);
             }
-
         }
 
-        public virtual bool Exists(long id)
+        public virtual bool Exists(int id)
         {
             return repository.Exists(id);
         }
@@ -40,7 +38,7 @@ namespace CloudBar.BusinessLogic.Services
             return repository.Exists(filter);
         }
 
-        public virtual T Get(long id)
+        public virtual T Get(int id)
         {
             return repository.Get(id);
         }
@@ -73,7 +71,6 @@ namespace CloudBar.BusinessLogic.Services
             }
             catch (Exception ex)
             {
-
                 throw new ArgumentException(ex.Message);
             }
         }

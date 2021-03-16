@@ -120,7 +120,7 @@ namespace CloudBar.DataAccess.Repositories
             return new PagedList<TResult>(sortedResults, startRowIndex, pageSize);
         }
 
-        public TEntity Get(long id)
+        public TEntity Get(int id)
         {
             return _DbSet.Find(id);
         }
@@ -145,7 +145,7 @@ namespace CloudBar.DataAccess.Repositories
 
             return sortedResults.FirstOrDefault();
         }
-        public bool Exists(long id)
+        public bool Exists(int id)
         {
             return _DbSet.Find(id) != null;
         }

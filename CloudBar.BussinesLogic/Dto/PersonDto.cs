@@ -1,24 +1,20 @@
 ﻿using System;
-using System.ComponentModel.DataAnnotations.Schema;
+using System.Collections.Generic;
+using System.Text;
 
-namespace CloudBar.Domain.General
+namespace CloudBar.BusinessLogic.Dto
 {
-    [Table("People")]
-    public class Person : BaseEntity
+    public class PersonDto
     {
         public string Identification { get; set; }
         public string Name { get; set; }
         public string LastName { get; set; }
-        public DateTime Datebirth { get; set; }
+        public DateTime? Datebirth { get; set; }
         public string Address { get; set; }
-        [Column("cityOrDistrict")]
         public string District { get; set; }
-        [Column("stateOrProvince")]
         public string Province { get; set; }
         public string Nationality { get; set; }
         public string Phone { get; set; }
-        public int? PlaceId { get; set; }
-
-        public Place Place { get; set; }
+        public int PlaceId { get; set; }
     }
 }

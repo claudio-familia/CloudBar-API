@@ -1,14 +1,14 @@
 ﻿using CloudBar.BusinessLogic.Services.Contracts;
-using CloudBar.Domain.General;
+using CloudBar.Domain.Security;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CloudBar.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class PlaceController : BaseController<Place>
+    public class RolesController : BaseController<Role>
     {
-        public PlaceController(IBaseService<Place> baseService) : base(baseService)
+        public RolesController(IBaseService<Role> baseService) : base(baseService)
         {
         }
     }
