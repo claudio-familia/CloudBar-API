@@ -59,6 +59,8 @@ namespace CloudBar
 
             app.UseAuthorization();
 
+            app.UseCors("EveryOne");
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

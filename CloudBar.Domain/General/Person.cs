@@ -15,6 +15,7 @@ namespace CloudBar.Domain.General
         public string District { get; set; }
         [Column("stateOrProvince")]
         public string Province { get; set; }
+        [Column("country")]
         public string Nationality { get; set; }
         public string Phone { get; set; }
         public int? PlaceId { get; set; }

@@ -9,6 +9,6 @@ namespace CloudBar.BusinessLogic.Services.Contracts
     {
         public IActionResult Login(string username, string password);
         public string Encrypt(string text);
-        public string Decrypt(string text);
+        public string Decrypt(string text);        
     }
 }
