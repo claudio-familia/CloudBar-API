@@ -1,5 +1,6 @@
 ﻿using CloudBar.BusinessLogic.Services.Contracts;
 using CloudBar.DataAccess.Repositories.Contracts;
+using CloudBar.Domain;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Linq.Expressions;
 
 namespace CloudBar.BusinessLogic.Services
 {
-    public class BaseService<T> : IBaseService<T> where T : class, new()
+    public class BaseService<T> : IBaseService<T> where T : class, IAuditableEntity, new()
     {
         protected readonly IDataRepository<T> repository;
 
@@ -20,6 +21,8 @@ namespace CloudBar.BusinessLogic.Services
         {
             try
             {
+                entity.Active = true;
+
                 return repository.Add(entity);
             }
             catch (Exception e)

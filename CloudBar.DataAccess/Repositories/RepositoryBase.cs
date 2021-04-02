@@ -8,11 +8,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
+using CloudBar.Domain;
 
 namespace CloudBar.DataAccess.Repositories
 {
     public abstract class RepositoryBase<TEntity, U> : IDataRepository<TEntity>
-        where TEntity : class, new()
+        where TEntity : class, IAuditableEntity, new()
         where U : DbContext
     {
         protected readonly U _Context;
@@ -61,7 +62,7 @@ namespace CloudBar.DataAccess.Repositories
 
         public virtual IEnumerable<TEntity> GetAll(string sortExpression = null)
         {
-            return _DbSet.AsNoTracking().OrderBy(sortExpression).ToList();
+            return _DbSet.AsNoTracking().Where(x => x.Active.Value).OrderBy(sortExpression).ToList();
         }
 
         public IPagedList<TEntity> GetPaged(int startRowIndex, int pageSize, string sortExpression = null)

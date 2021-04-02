@@ -1,10 +1,11 @@
 ﻿using CloudBar.BusinessLogic.Services.Contracts;
 using CloudBar.Controllers.Contracts;
+using CloudBar.Domain;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CloudBar.Controllers
 {    
-    public class BaseController<T> : Controller, IBaseController<T> where T : class, new()
+    public class BaseController<T> : Controller, IBaseController<T> where T : class, IAuditableEntity, new()
     {
         private readonly IBaseService<T> _baseService;
         public BaseController(IBaseService<T> baseService)
@@ -13,13 +14,13 @@ namespace CloudBar.Controllers
         }
 
         [HttpGet]
-        public IActionResult Get(string sortExpression)
+        public virtual IActionResult Get(string sortExpression)
         {
             return Ok(_baseService.GetAll(sortExpression));
         }
 
         [HttpGet("{id}")]
-        public IActionResult Get(int id)
+        public virtual IActionResult Get(int id)
         {
             var response = _baseService.Get(id);
 
@@ -29,7 +30,7 @@ namespace CloudBar.Controllers
         }
 
         [HttpPost]
-        public IActionResult Post(T entity)
+        public virtual IActionResult Post(T entity)
         {
             var response = _baseService.Add(entity);
 
@@ -37,8 +38,21 @@ namespace CloudBar.Controllers
         }
 
         [HttpPut]
-        public IActionResult Put(T entity)
+        public virtual IActionResult Put(T entity)
         {
+            var response = _baseService.Update(entity);
+
+            return Ok(response);
+        }
+
+        [HttpDelete]
+        [Route("id")]
+        public virtual IActionResult Delete(int id)
+        {
+            var entity = _baseService.Get(id);
+
+            entity.Active = false;
+
             var response = _baseService.Update(entity);
 
             return Ok(response);
