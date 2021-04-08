@@ -9,6 +9,7 @@ namespace CloudBar.Domain.Warehouse
         public string Description { get; set; }
         public int Stock { get; set; }
         public decimal Price { get; set; }
+        public string ImgUrl { get; set; }
 
         public Category Category { get; set; }
     }

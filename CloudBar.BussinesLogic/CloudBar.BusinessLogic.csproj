@@ -17,4 +17,8 @@
     <ProjectReference Include="..\CloudBar.DataAccess\CloudBar.DataAccess.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Services\Purchase\" />
+  </ItemGroup>
+
 </Project>

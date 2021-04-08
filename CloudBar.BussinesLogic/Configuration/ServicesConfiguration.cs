@@ -9,6 +9,9 @@ using CloudBar.Domain.General;
 using CloudBar.Domain.Security;
 using Microsoft.Extensions.DependencyInjection;
 using CloudBar.BusinessLogic.Services.General;
+using CloudBar.Domain.Warehouse;
+using CloudBar.BusinessLogic.Services.Warehouse;
+using CloudBar.BusinessLogic.Services.Sale;
 
 namespace CloudBar.BusinessLogic.Configuration
 {
@@ -23,6 +26,19 @@ namespace CloudBar.BusinessLogic.Configuration
             services.AddScoped<IBaseService<Place>, PlaceService>();
             services.AddScoped<IBaseService<Person>, PersonService>();
             services.AddScoped<IBaseService<Parameter>, ParameterService>();
+            #endregion
+
+            #region Warehouse
+
+            services.AddScoped<IBaseService<Category>, CategoryService>();
+            services.AddScoped<IBaseService<Item>, ItemService>();
+
+            #endregion 
+            
+            #region Sales
+
+            services.AddScoped<ISaleOrderService, SaleOrderService>();
+
             #endregion
 
             services.AddScoped<IAuthService, AuthService>();
