@@ -1,4 +1,4 @@
-name: CloudBarApiContainer
+name: HerokuContainer
  
 on:
   push:
