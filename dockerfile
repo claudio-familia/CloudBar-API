@@ -2,6 +2,10 @@ FROM mcr.microsoft.com/dotnet/core/sdk:3.1 AS base
 WORKDIR /app
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1 AS build
 WORKDIR /src
+COPY ["CloudBar.BussinesLogic/CloudBar.BusinessLogic.csproj", "CloudBar.BussinesLogic/"]
+COPY ["CloudBar.Common/CloudBar.Common.csproj", "CloudBar.Common/"]
+COPY ["CloudBar.DataAccess/CloudBar.DataAccess.csproj", "CloudBar.DataAccess/"]
+COPY ["CloudBar.Domain/CloudBar.Domain.csproj", "CloudBar.Domain/"]
 COPY ["CloudBarAPI/CloudBar.csproj", "CloudBarAPI/"]
 RUN dotnet restore "CloudBarAPI/CloudBar.csproj"
 COPY . .
