@@ -1,6 +1,8 @@
 ﻿using CloudBar.BusinessLogic.Services.Contracts;
 using CloudBar.DataAccess.Repositories.Contracts;
 using CloudBar.Domain.Sale;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;

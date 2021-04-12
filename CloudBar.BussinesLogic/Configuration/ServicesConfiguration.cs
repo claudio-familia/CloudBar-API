@@ -12,6 +12,7 @@ using CloudBar.BusinessLogic.Services.General;
 using CloudBar.Domain.Warehouse;
 using CloudBar.BusinessLogic.Services.Warehouse;
 using CloudBar.BusinessLogic.Services.Sale;
+using CloudBar.Domain.Sale;
 
 namespace CloudBar.BusinessLogic.Configuration
 {
@@ -26,6 +27,7 @@ namespace CloudBar.BusinessLogic.Configuration
             services.AddScoped<IBaseService<Place>, PlaceService>();
             services.AddScoped<IBaseService<Person>, PersonService>();
             services.AddScoped<IBaseService<Parameter>, ParameterService>();
+            services.AddScoped<IBaseService<Employee>, EmployeeService>();
             #endregion
 
             #region Warehouse
@@ -38,6 +40,7 @@ namespace CloudBar.BusinessLogic.Configuration
             #region Sales
 
             services.AddScoped<ISaleOrderService, SaleOrderService>();
+            services.AddScoped<IBaseService<Client>, ClientService>();
 
             #endregion
 

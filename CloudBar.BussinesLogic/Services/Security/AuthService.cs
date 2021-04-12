@@ -58,7 +58,7 @@ namespace CloudBar.BusinessLogic.Services.Security
 
                 return new NotFoundObjectResult("Invalid User");
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 return new StatusCodeResult((int)HttpStatusCode.InternalServerError);
             }
@@ -69,7 +69,7 @@ namespace CloudBar.BusinessLogic.Services.Security
             List<Claim> claims = new List<Claim>()
             {
                  new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
-                 new Claim(ClaimTypes.Name, user.Username.ToString())
+                 new Claim(ClaimTypes.Name, user.Username.ToString()),
             };
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["Authentication:SecretKey"]));

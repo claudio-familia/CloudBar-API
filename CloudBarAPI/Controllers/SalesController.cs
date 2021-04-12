@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using CloudBar.Domain.Sale;
 using CloudBar.BusinessLogic.Services.Contracts;
+using Microsoft.EntityFrameworkCore;
 
 namespace CloudBar.Controllers
 {
@@ -17,6 +18,14 @@ namespace CloudBar.Controllers
         public SalesController(ISaleOrderService baseService) : base(baseService)
         {
             _saleOrderService = baseService;
+        }
+
+        [HttpGet]
+        public override IActionResult Get(string sortExpression)
+        {
+            var response = _saleOrderService.GetAll(order => order.Include(or => or.Creator));
+
+            return Ok(response);
         }
 
         [HttpPost]        
