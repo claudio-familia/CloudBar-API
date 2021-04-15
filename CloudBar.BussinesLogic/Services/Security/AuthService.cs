@@ -4,6 +4,7 @@ using CloudBar.DataAccess.Repositories.Contracts;
 using CloudBar.Domain.Security;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
@@ -11,21 +12,25 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Net;
 using System.Security.Claims;
 using System.Text;
+using CloudBar.Domain.Sale;
 
 namespace CloudBar.BusinessLogic.Services.Security
 {
     public class AuthService : IAuthService
     {
         private readonly IDataRepository<User> _baseRepository;
+        private readonly IDataRepository<Client> _clientRepository;
         private readonly IConfiguration configuration;
         private readonly ICryptographyService _cryptographyService;
         public AuthService(IDataRepository<User> baseRepository,
+                           IDataRepository<Client> clientRepository,
                            IConfiguration _configuration,
                            ICryptographyService cryptographyService)
         {
             _baseRepository = baseRepository;
             configuration = _configuration;
             _cryptographyService = cryptographyService;
+            _clientRepository = clientRepository;
         }
 
         public string Decrypt(string text)
@@ -48,9 +53,11 @@ namespace CloudBar.BusinessLogic.Services.Security
 
                     User user = _baseRepository.Get(user => user.Username == username && user.Password == passwordEncrypt);
 
+                    Client client = _clientRepository.Get(us => us, u => u.PersonId == user.PersonId);
+
                     if (user != null)
                     {
-                        return new OkObjectResult(new { user.Username, token = GenerateJWT(user) });
+                        return new OkObjectResult(new { user.Username, token = GenerateJWT(user, client) });
                     }
 
                     return new UnauthorizedObjectResult("Invalid Password");
@@ -64,13 +71,16 @@ namespace CloudBar.BusinessLogic.Services.Security
             }
         }
 
-        private string GenerateJWT(User user)
-        {
+        private string GenerateJWT(User user, Client client)
+        {            
             List<Claim> claims = new List<Claim>()
             {
                  new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
-                 new Claim(ClaimTypes.Name, user.Username.ToString()),
+                 new Claim(ClaimTypes.Name, user.Username),
+                 new Claim(ClaimTypes.Role, user.RoleId.ToString()),
             };
+
+            if (client != null) claims.Add(new Claim(ClaimTypes.Sid, client.Id.ToString()));
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["Authentication:SecretKey"]));
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature);

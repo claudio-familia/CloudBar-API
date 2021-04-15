@@ -15,6 +15,8 @@ namespace CloudBar.Domain.Sale
         public decimal Taxes { get; set; }
         public decimal Total { get; set; }
         public DateTime Date { get; set; }
+        public string PaymentType { get; set; }
+        public string RNC { get; set; }
         public string NCF { get; set; }
         public DateTime? NCFDueDate { get; set; }
                 

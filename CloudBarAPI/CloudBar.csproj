@@ -5,6 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.14" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\CloudBar.BussinesLogic\CloudBar.BusinessLogic.csproj" />
     <ProjectReference Include="..\CloudBar.DataAccess\CloudBar.DataAccess.csproj" />
   </ItemGroup>

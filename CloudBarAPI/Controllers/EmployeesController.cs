@@ -7,6 +7,7 @@ using CloudBar.Domain.General;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace CloudBar.Controllers
 {
@@ -15,8 +16,19 @@ namespace CloudBar.Controllers
     [Authorize]
     public class EmployeesController : BaseController<Employee>
     {
+        private readonly IBaseService<Employee> _baseService;
         public EmployeesController(IBaseService<Employee> baseService) : base(baseService)
         {
+            _baseService = baseService;
+        }
+
+        [HttpGet]
+        public override IActionResult Get(string sortExpression)
+        {
+            var response = _baseService.GetAll(employees => employees.Include(or => or.Creator)
+                                                                  .Include(or => or.Person));
+
+            return Ok(response);
         }
     }
 }

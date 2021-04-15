@@ -41,6 +41,7 @@ namespace CloudBar.BusinessLogic.Configuration
 
             services.AddScoped<ISaleOrderService, SaleOrderService>();
             services.AddScoped<IBaseService<Client>, ClientService>();
+            services.AddScoped<IBaseService<Invoice>, InvoiceService>();
 
             #endregion
 
