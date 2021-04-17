@@ -21,6 +21,17 @@ namespace CloudBar.Controllers
         }
 
         [HttpGet]
+        public override IActionResult Get(string sortExpression)
+        {
+            var response = _baseService.GetAll(item => item.Include(or => or.Creator)
+                                                                  .Include(or => or.Category)
+                                                                  .Include(or => or.Place),
+                                                     item => item.Active.Value);
+
+            return Ok(response);
+        }
+
+        [HttpGet]
         [Route("search/{searchCriteria}")]
         public IActionResult GetBySearchCriteria(string searchCriteria)
         {

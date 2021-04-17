@@ -10,5 +10,6 @@ namespace CloudBar.Domain.Purchase
         public bool IsJuridic { get; set; }
         public string Address { get; set; }
         public string Phone { get; set; }
+        public int? PlaceId { get; set; }
     }
 }

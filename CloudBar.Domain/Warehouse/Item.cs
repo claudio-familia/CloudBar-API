@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CloudBar.Domain.General;
+using System;
 
 namespace CloudBar.Domain.Warehouse
 {
@@ -10,7 +11,9 @@ namespace CloudBar.Domain.Warehouse
         public int Stock { get; set; }
         public decimal Price { get; set; }
         public string ImgUrl { get; set; }
+        public int? PlaceId { get; set; }
 
         public Category Category { get; set; }
+        public Place Place { get; set; }
     }
 }

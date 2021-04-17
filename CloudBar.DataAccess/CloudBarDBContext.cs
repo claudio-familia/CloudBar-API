@@ -22,8 +22,7 @@ namespace CloudBar.DataAccess
 
         #region Save Changes
         public override int SaveChanges()
-        {
-            // Get the entries that are auditable
+        {            
             var auditableEntitySet = ChangeTracker.Entries<IAuditableEntity>();
 
             if (auditableEntitySet != null)
