@@ -4,18 +4,24 @@
 
 /CloudBar/bin/
 /CloudBar/obj/
+/CloudBar/.vs/
 
 /CloudBar.BussinesLogic/bin/
 /CloudBar.BussinesLogic/obj/
+/CloudBar.BussinesLogic/.vs/
 
 /CloudBar.Common/bin/
 /CloudBar.Common/obj/
+/CloudBar.Common/.vs/
 
 /CloudBar.DataAccess/bin/
 /CloudBar.DataAccess/obj/
+/CloudBar.DataAccess/.vs/
 
 /CloudBar.Domain/bin/
 /CloudBar.Domain/obj/
+/CloudBar.Domain/.vs/
 
 /CloudBarAPI/obj/
 /CloudBarAPI/bin/
+/CloudBarAPI/.vs/
